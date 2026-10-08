@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f0f0ec">
+  <meta name="description" content="Personal style, seen differently. Meet a stylist who sees you. Discover ETTO personal styling.">
+  <title>ETTO — Meet your truest self</title>
+  <link rel="icon" href="assets/etto-stamp.png" type="image/png">
+  <link rel="preload" href="assets/ABCDiatype-Regular.otf" as="font" type="font/otf" crossorigin>
+  <link rel="preload" href="assets/campaign.png" as="image" fetchpriority="high">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#join">Skip to signup</a>
+  <main>
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="campaign" aria-hidden="true"><img src="assets/campaign.png" alt="" fetchpriority="high"></div>
+      <header class="site-header">
+        <a class="stamp" href="#top" aria-label="ETTO home"><img src="assets/etto-stamp.png" alt="" width="66" height="43"></a>
+        <a class="wordmark" href="#top" aria-label="ETTO home"><img src="assets/etto-wordmark.png" alt="ETTO" width="158" height="42"></a>
+        <a class="header-link eyebrow" href="#how-it-works">How it works <span aria-hidden="true">↗</span></a>
+      </header>
+      <div class="hero-content">
+        <p class="eyebrow introduction">Personal styling, more personal.</p>
+        <h1 id="hero-title">Meet your<br>truest self.</h1>
+        <div class="join" id="join">
+          <fieldset class="role-picker">
+            <legend class="sr-only">What brings you to ETTO?</legend>
+            <span class="role-prefix" aria-hidden="true">I’m</span>
+            <label><input type="radio" name="role" value="client" checked><span class="role-label">looking</span></label>
+            <span class="role-or" aria-hidden="true">or</span>
+            <label><input type="radio" name="role" value="stylist"><span class="role-label">creating</span></label>
+          </fieldset>
+          <p class="role-description" id="role-description">for a stylist who sees the person you already are.</p>
+          <form id="signup-form" aria-describedby="preview-note" novalidate>
+            <div class="form-fields">
+              <div class="field"><label class="eyebrow" for="email">Email address</label><input id="email" name="email" type="email" placeholder="you@email.com" autocomplete="email" required maxlength="254" aria-describedby="email-error"><span class="field-error" id="email-error"></span></div>
+              <div class="field" id="instagram-field" hidden><label class="eyebrow" for="instagram">Instagram</label><input id="instagram" name="instagram" type="text" placeholder="@yourhandle" autocomplete="off" maxlength="31" aria-describedby="instagram-error"><span class="field-error" id="instagram-error"></span></div>
+            </div>
+            <button class="primary-button" type="submit"><span id="submit-label">Join the list</span><span aria-hidden="true">↗</span></button>
+            <p class="preview-note" id="preview-note">Preview only. Your details won’t be sent or saved.</p>
+          </form>
+          <div class="confirmation" id="confirmation" role="status" tabindex="-1" hidden>
+            <span class="confirmation-icon" aria-hidden="true">↗</span>
+            <h2 id="confirmation-title">A little closer to you.</h2>
+            <p id="confirmation-copy">This is where your waitlist confirmation will appear. This preview hasn’t sent or saved your details.</p>
+            <button class="text-button" id="reset-form" type="button">Back to the form <span aria-hidden="true">↗</span></button>
+          </div>
+        </div>
+      </div>
+      <div class="hero-bottom eyebrow"><span>A new way to find your own.</span><a href="#how-it-works">Discover ETTO <span aria-hidden="true">↓</span></a></div>
+    </section>
+
+    <section class="how-section" id="how-it-works" aria-labelledby="how-title">
+      <div class="section-intro"><p class="eyebrow">A different kind of chemistry.</p><h2 id="how-title">Good style starts<br>with being seen.</h2><p id="steps-description">Not a new you. A wardrobe that feels like you.<br>Here’s how we get there.</p></div>
+      <div class="steps-wrap"><p class="eyebrow steps-heading">How it works</p><ol class="steps">
+        <li><span class="step-number eyebrow">01</span><div><h3 id="step-1-title">Tell us what you’re looking for</h3><p id="step-1-copy">Your taste, your everyday, and what you want to feel. We start with you.</p></div><span class="step-arrow" aria-hidden="true">↗</span></li>
+        <li><span class="step-number eyebrow">02</span><div><h3 id="step-2-title">Meet your stylist</h3><p id="step-2-copy">Find someone who gets your eye, your life, and where you want to go.</p></div><span class="step-arrow" aria-hidden="true">↗</span></li>
+        <li><span class="step-number eyebrow">03</span><div><h3 id="step-3-title">New wardrobe, more you</h3><p id="step-3-copy">Make room for pieces that feel right. And a style that feels entirely your own.</p></div><span class="step-arrow" aria-hidden="true">↗</span></li>
+      </ol></div>
+    </section>
+
+    <section class="closing" aria-labelledby="closing-title"><p class="eyebrow">Your point of view. A fresh perspective.</p><div class="closing-row"><h2 id="closing-title">Seen, at last.</h2><a class="closing-link" href="#join"><span id="closing-label">Join the list</span><span class="circle-arrow" aria-hidden="true">↗</span></a></div></section>
+  </main>
+  <footer><a class="footer-logo" href="#top" aria-label="ETTO, back to top"><img src="assets/etto-wordmark.png" alt="ETTO" width="158" height="42" loading="lazy"></a><div class="footer-paths"><div><span class="eyebrow">For clients</span><a href="#join" data-role="client">Find your stylist <span aria-hidden="true">↗</span></a></div><div><span class="eyebrow">For stylists</span><a href="#join" data-role="stylist">Apply to style <span aria-hidden="true">↗</span></a></div></div><p class="copyright eyebrow">© <span id="year">2026</span> ETTO</p></footer>
+</body>
+</html>
