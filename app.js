@@ -43,7 +43,6 @@ function setRole(role) {
   document.querySelector(`input[name="role"][value="${role}"]`).checked = true;
   document.querySelector('#role-description').textContent = copy.description;
   document.querySelector('#submit-label').textContent = copy.action;
-  document.querySelector('#closing-label').textContent = copy.action;
   document.querySelector('#steps-description').textContent = copy.stepsDescription;
   document.querySelector('#steps-description').style.whiteSpace = 'pre-line';
   document.querySelector('#instagram-field').hidden = role !== 'stylist';
@@ -98,3 +97,41 @@ document.querySelector('#reset-form').addEventListener('click', () => {
 });
 document.querySelector('#year').textContent = new Date().getFullYear();
 setRole('client');
+
+// The opener advances only on a click or Space; scrolling remains natural.
+const hero = document.querySelector('.hero');
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+if (!location.hash || location.hash === '#top') {
+  hero.classList.add('intro-running');
+  const movingMark = hero.querySelector('.opener-mark');
+  const destination = hero.querySelector('.wordmark img');
+  let started = false;
+  function finishIntro() {
+    hero.classList.remove('intro-running', 'intro-reveal');
+    movingMark.removeEventListener('transitionend', onTransitionEnd);
+  }
+  function onTransitionEnd(event) {
+    if (event.target === movingMark && event.propertyName === 'width') finishIntro();
+  }
+  function revealHero(event) {
+    if (started) return;
+    if (event.type === 'keydown' && event.code !== 'Space') return;
+    if (event.target.closest('input,textarea,select,[contenteditable="true"]')) return;
+    event.preventDefault();
+    event.stopPropagation();
+    started = true;
+    document.removeEventListener('click', revealHero, true);
+    document.removeEventListener('keydown', revealHero, true);
+    const target = destination.getBoundingClientRect();
+    const canvas = hero.getBoundingClientRect();
+    hero.style.setProperty('--mark-end-width', `${target.width}px`);
+    hero.style.setProperty('--mark-end-top', `${target.top - canvas.top + target.height / 2}px`);
+    if (reducedMotion.matches) { finishIntro(); return; }
+    movingMark.addEventListener('transitionend', onTransitionEnd);
+    hero.classList.add('intro-reveal');
+    // Cleanup fallback only after user activation, for interrupted transitions.
+    window.setTimeout(finishIntro, 1800);
+  }
+  document.addEventListener('click', revealHero, true);
+  document.addEventListener('keydown', revealHero, true);
+}

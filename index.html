@@ -8,20 +8,32 @@
   <title>ETTO — Meet your truest self</title>
   <link rel="icon" href="assets/etto-stamp.png" type="image/png">
   <link rel="preload" href="assets/ABCDiatype-Regular.otf" as="font" type="font/otf" crossorigin>
-  <link rel="preload" href="assets/campaign.png" as="image" fetchpriority="high">
+  <link rel="preload" href="assets/hero-figma-opener-rendered.png" as="image" fetchpriority="high">
   <link rel="stylesheet" href="styles.css">
   <script src="app.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#join">Skip to signup</a>
   <main>
-    <section class="hero" id="top" aria-labelledby="hero-title">
-      <div class="campaign" aria-hidden="true"><img src="assets/campaign.png" alt="" fetchpriority="high"></div>
+    <section class="hero" id="top" aria-label="ETTO campaign">
+      <div class="campaign" aria-hidden="true"><img src="assets/hero-figma-second-rendered.png" alt="" fetchpriority="high"></div>
+      <div class="opener-photo" aria-hidden="true"><img src="assets/hero-figma-opener-rendered.png" alt="" fetchpriority="high"></div>
+      <div class="opener-mark" aria-hidden="true"><img src="assets/etto-red.svg" alt=""></div>
+      <div class="opener-stamp" aria-hidden="true"><img src="assets/stamp-red.svg" alt=""></div>
       <header class="site-header">
-        <a class="stamp" href="#top" aria-label="ETTO home"><img src="assets/etto-stamp.png" alt="" width="66" height="43"></a>
-        <a class="wordmark" href="#top" aria-label="ETTO home"><img src="assets/etto-wordmark.png" alt="ETTO" width="158" height="42"></a>
-        <a class="header-link eyebrow" href="#how-it-works">How it works <span aria-hidden="true">↗</span></a>
+        <nav class="site-nav" aria-label="Main navigation">
+        <a class="stamp" href="#top" aria-label="ETTO home"><img src="assets/stamp-red.svg" alt="" width="38.149" height="25"></a>
+        <a class="wordmark" href="#top" aria-label="ETTO home"><img src="assets/etto-red.svg" alt="ETTO" width="82" height="21.696"></a>
+        </nav>
       </header>
+      <div class="concierge-intro">
+        <p>ETTO is a new kind of luxury concierge.<br>We aim to make bespoke creative services accessible to you via exceptional talent and effortless experiences.</p>
+        <p>Our first service offering as a member is styling and wardrobe services.</p>
+        <div class="concierge-actions"><a href="#join" data-role="client">Join as a member</a><a href="#join" data-role="stylist">Apply as a stylist</a></div>
+      </div>
+    </section>
+
+    <section class="signup-section" aria-labelledby="hero-title">
       <div class="hero-content">
         <p class="eyebrow introduction">Personal styling, more personal.</p>
         <h1 id="hero-title">Meet your<br>truest self.</h1>
@@ -50,7 +62,6 @@
           </div>
         </div>
       </div>
-      <div class="hero-bottom eyebrow"><span>A new way to find your own.</span><a href="#how-it-works">Discover ETTO <span aria-hidden="true">↓</span></a></div>
     </section>
 
     <section class="how-section" id="how-it-works" aria-labelledby="how-title">
@@ -62,7 +73,6 @@
       </ol></div>
     </section>
 
-    <section class="closing" aria-labelledby="closing-title"><p class="eyebrow">Your point of view. A fresh perspective.</p><div class="closing-row"><h2 id="closing-title">Seen, at last.</h2><a class="closing-link" href="#join"><span id="closing-label">Join the list</span><span class="circle-arrow" aria-hidden="true">↗</span></a></div></section>
   </main>
   <footer><a class="footer-logo" href="#top" aria-label="ETTO, back to top"><img src="assets/etto-wordmark.png" alt="ETTO" width="158" height="42" loading="lazy"></a><div class="footer-paths"><div><span class="eyebrow">For clients</span><a href="#join" data-role="client">Find your stylist <span aria-hidden="true">↗</span></a></div><div><span class="eyebrow">For stylists</span><a href="#join" data-role="stylist">Apply to style <span aria-hidden="true">↗</span></a></div></div><p class="copyright eyebrow">© <span id="year">2026</span> ETTO</p></footer>
 </body>
