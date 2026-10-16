@@ -6,8 +6,8 @@ const content = {
     action: 'Apply for membership',
     steps: [
       ['It starts with a conversation', 'We ingest your life, your taste, and what you want. This happen automatically with software + a conversation with us.'],
-      ['a considered introduction', ''],
-      ['New wardrobe, more you', ''],
+      ['a considered introduction', 'We introduce you to a stylist whose eye aligns with yours, then shape the relationship around your life.'],
+      ['New wardrobe, more you', 'Discover pieces that feel like you, with thoughtful support for everything that comes next.'],
     ],
     confirmation: 'A little closer to you.',
     confirmationCopy: 'Thank you for your interest in ETTO. Your membership request has been received.',
@@ -19,8 +19,8 @@ const content = {
     action: 'Partner with Etto',
     steps: [
       ['Show us your eye', 'Share your perspective and the work that makes your style unmistakably yours.'],
-      ['Get matched with clients', ''],
-      ['Grow your practice', ''],
+      ['Get matched with clients', 'Meet members who value your point of view and are ready to build something personal with you.'],
+      ['Grow your practice', 'Spend more time on the creative work while Etto takes care of the details around it.'],
     ],
     confirmation: 'Your eye belongs here.',
     confirmationCopy: 'Thank you for sharing your interest. Your stylist application has been received.',
