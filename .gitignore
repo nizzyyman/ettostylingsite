@@ -7,3 +7,7 @@ node_modules/
 
 .env*
 !.env.example
+
+# Local agent guidance is not website source.
+.agents/skills/
+skills-lock.json
