@@ -1,14 +1,15 @@
+const memberSteps = [1, 2, 3].map(step => [
+  document.querySelector(`#step-${step}-title`).textContent,
+  document.querySelector(`#step-${step}-copy`).textContent,
+]);
+
 const content = {
   client: {
     headline: 'Get matched with an eye<br> you trust.',
     introduction: 'Meet a stylist who understands your taste and how you live, with Etto attending to the details along the way.',
     description: 'to outsource my aesthetic life.',
     action: 'Apply for membership',
-    steps: [
-      ['It starts with a conversation', 'We ingest your life, your taste, and what you want. This happen automatically with software + a conversation with us.'],
-      ['a considered introduction', 'We introduce you to a stylist whose eye aligns with yours, then shape the relationship around your life.'],
-      ['New wardrobe, more you', 'Discover pieces that feel like you, with thoughtful support for everything that comes next.'],
-    ],
+    steps: memberSteps,
     confirmation: 'A little closer to you.',
     confirmationCopy: 'Thank you for your interest in ETTO. Your membership request has been received.',
   },
