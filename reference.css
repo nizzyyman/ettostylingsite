@@ -18,7 +18,7 @@ body.home-page{--gutter:clamp(24px,4.861111vw,70px);--nav-gutter:var(--gutter);-
 .home-page .concierge-intro a{color:#667066;font:400 16px/1.25 DiatypeMono,monospace;text-transform:uppercase;margin-top:0;width:max-content}
 
 .home-page .signup-section{padding:var(--section-space) var(--gutter) 0;background:#fff}
-.home-page .signup-section .hero-content{display:grid;grid-template-columns:minmax(0,532.31px) minmax(0,532.32px);grid-template-rows:105.4px 164.4px;justify-content:space-between;column-gap:0;width:100%;max-width:none;padding:0;min-height:269.8px}
+.home-page .signup-section .hero-content{display:grid;grid-template-columns:minmax(0,532.31px) minmax(0,532.32px);grid-template-rows:minmax(105.4px,auto) minmax(164.4px,auto);justify-content:space-between;column-gap:0;width:100%;max-width:none;padding:0;min-height:269.8px}
 .home-page .signup-section h2{grid-column:1;grid-row:1;font:500 40px/1.3 Diatype,Arial,sans-serif;letter-spacing:0;align-self:start;white-space:nowrap}
 .home-page .signup-copy{grid-column:1;grid-row:2;align-self:start;display:flex;align-items:center;min-height:96px;width:min(100%,451px);font:400 14px/1.35 DiatypeMono,monospace}
 .home-page .signup-section .join{grid-column:2;grid-row:1/span 2;align-self:start;width:100%;max-width:532.32px;margin:0;scroll-margin-top:24px}
@@ -79,7 +79,7 @@ body.home-page{--gutter:clamp(24px,4.861111vw,70px);--nav-gutter:var(--gutter);-
   .home-page .concierge-intro{width:62%}
   .home-page .concierge-intro h1{font-size:clamp(25px,3.125vw,32px);white-space:normal}
   .home-page .signup-section,.home-page .how-section,.home-page .audience-section{padding-left:var(--gutter);padding-right:var(--gutter)}
-  .home-page .signup-section .hero-content{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:5%}
+  .home-page .signup-section .hero-content{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:5%;row-gap:0}
   .home-page .signup-section h2{font-size:clamp(30px,3.125vw,40px);white-space:normal;text-wrap:balance}
   .home-page .signup-section h2 br{display:none}
   .home-page .story-grid{grid-template-columns:repeat(3,minmax(0,1fr));max-width:none}
