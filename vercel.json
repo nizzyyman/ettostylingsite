@@ -1,5 +1,12 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "framework": null
+  "framework": null,
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/", "destination": "/concierge/", "permanent": false }
+  ],
+  "rewrites": [
+    { "source": "/concierge/api/signup", "destination": "/api/signup" }
+  ]
 }

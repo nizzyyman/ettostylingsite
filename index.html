@@ -3,40 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f0f0ec">
-  <meta name="description" content="Personal style, seen differently. Meet a stylist who sees you. Discover ETTO personal styling.">
-  <title>ETTO — Meet your truest self</title>
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Etto is a new kind of luxury concierge. Bespoke creative services, exceptional talent, and a team that takes care of the details.">
+  <title>ETTO — A new kind of luxury concierge</title>
   <link rel="icon" href="assets/etto-stamp.png" type="image/png">
   <link rel="preload" href="assets/ABCDiatype-Regular.otf" as="font" type="font/otf" crossorigin>
-  <link rel="preload" href="assets/hero-figma-opener-rendered.png" as="image" fetchpriority="high">
+  <link rel="preload" href="assets/reference/hero-members.png" as="image" fetchpriority="high">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="reference.css">
+  <link rel="stylesheet" href="actions.css">
+  <script src="nav.js" defer></script>
   <script src="app.js" defer></script>
+  <script>
+    if (location.hash.startsWith('#figmacapture=')) {
+      if (new URLSearchParams(location.search).get('figma-role') === 'stylist') {
+        document.addEventListener('DOMContentLoaded', () => {
+          document.querySelector('input[name="role"][value="stylist"]')?.click();
+        }, { once: true });
+      }
+      const captureScript = document.createElement('script');
+      captureScript.src = 'https://mcp.figma.com/mcp/html-to-design/capture.js';
+      captureScript.async = true;
+      document.head.appendChild(captureScript);
+    }
+  </script>
 </head>
-<body>
+<body class="home-page">
   <a class="skip-link" href="#join">Skip to signup</a>
   <main>
+    <header class="site-header"><etto-nav></etto-nav></header>
     <section class="hero" id="top" aria-label="ETTO campaign">
-      <div class="campaign" aria-hidden="true"><img src="assets/hero-figma-second-rendered.png" alt="" fetchpriority="high"></div>
-      <div class="opener-photo" aria-hidden="true"><img src="assets/hero-figma-opener-rendered.png" alt="" fetchpriority="high"></div>
-      <div class="opener-mark" aria-hidden="true"><img src="assets/etto-red.svg" alt=""></div>
-      <div class="opener-stamp" aria-hidden="true"><img src="assets/stamp-red.svg" alt=""></div>
-      <header class="site-header">
-        <nav class="site-nav" aria-label="Main navigation">
-        <a class="stamp" href="#top" aria-label="ETTO home"><img src="assets/stamp-red.svg" alt="" width="38.149" height="25"></a>
-        <a class="wordmark" href="#top" aria-label="ETTO home"><img src="assets/etto-red.svg" alt="ETTO" width="82" height="21.696"></a>
-        </nav>
-      </header>
+      <div class="campaign" aria-hidden="true"><img src="assets/reference/hero-members.png" alt="" fetchpriority="high"></div>
+      <img class="hero-wordmark" src="assets/reference/wordmark-black.svg" alt="ETTO">
       <div class="concierge-intro">
-        <p>ETTO is a new kind of luxury concierge.<br>We aim to make bespoke creative services accessible to you via exceptional talent and effortless experiences.</p>
-        <p>Our first service offering as a member is styling and wardrobe services.</p>
-        <div class="concierge-actions"><a href="#join" data-role="client">Join as a member</a><a href="#join" data-role="stylist">Apply as a stylist</a></div>
+        <h1>A new kind of luxury concierge</h1>
+        <p>Bespoke creative services, exceptional talent, and a team that takes care of the details.</p>
+        <p>Our membership begins with personal styling and wardrobe services.</p>
+        <a class="dot-action" href="#join" data-role="client"><span class="dot-action-label">Apply as a member</span></a>
       </div>
     </section>
 
     <section class="signup-section" aria-labelledby="hero-title">
       <div class="hero-content">
-        <p class="eyebrow introduction">Personal styling, more personal.</p>
-        <h1 id="hero-title">Meet your<br>truest self.</h1>
+        <h2 id="hero-title">Get matched with an eye<br>you trust.</h2>
+        <p class="signup-copy" id="signup-copy">Meet a stylist who understands your taste and how you live, with Etto attending to the details along the way.</p>
         <div class="join" id="join">
           <fieldset class="role-picker">
             <legend class="sr-only">What brings you to ETTO?</legend>
@@ -45,35 +55,43 @@
             <span class="role-or" aria-hidden="true">or</span>
             <label><input type="radio" name="role" value="stylist"><span class="role-label">creating</span></label>
           </fieldset>
-          <p class="role-description" id="role-description">for a stylist who sees the person you already are.</p>
+          <p class="role-description" id="role-description">to outsource my aesthetic life.</p>
           <form id="signup-form" aria-describedby="preview-note" novalidate>
+            <div class="sr-only" aria-hidden="true"><label for="website">Leave this field empty</label><input id="website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
             <div class="form-fields">
               <div class="field"><label class="eyebrow" for="email">Email address</label><input id="email" name="email" type="email" placeholder="you@email.com" autocomplete="email" required maxlength="254" aria-describedby="email-error"><span class="field-error" id="email-error"></span></div>
               <div class="field" id="instagram-field" hidden><label class="eyebrow" for="instagram">Instagram</label><input id="instagram" name="instagram" type="text" placeholder="@yourhandle" autocomplete="off" maxlength="31" aria-describedby="instagram-error"><span class="field-error" id="instagram-error"></span></div>
             </div>
-            <button class="primary-button" type="submit"><span id="submit-label">Join the list</span><span aria-hidden="true">↗</span></button>
-            <p class="preview-note" id="preview-note">Preview only. Your details won’t be sent or saved.</p>
+            <button class="primary-button dot-action" type="submit"><span class="dot-action-label" id="submit-label">Apply for membership</span></button>
+            <p class="field-error" id="form-error" role="alert"></p>
+            <p class="preview-note" id="preview-note">We’ll use your details to follow up on your application.</p>
           </form>
           <div class="confirmation" id="confirmation" role="status" tabindex="-1" hidden>
             <span class="confirmation-icon" aria-hidden="true">↗</span>
             <h2 id="confirmation-title">A little closer to you.</h2>
-            <p id="confirmation-copy">This is where your waitlist confirmation will appear. This preview hasn’t sent or saved your details.</p>
-            <button class="text-button" id="reset-form" type="button">Back to the form <span aria-hidden="true">↗</span></button>
+            <p id="confirmation-copy">Thank you for your interest in ETTO. We’ll be in touch.</p>
+            <button class="text-button dot-action" id="reset-form" type="button"><span class="dot-action-label">Back to the form</span></button>
           </div>
         </div>
       </div>
     </section>
 
     <section class="how-section" id="how-it-works" aria-labelledby="how-title">
-      <div class="section-intro"><p class="eyebrow">A different kind of chemistry.</p><h2 id="how-title">Good style starts<br>with being seen.</h2><p id="steps-description">Not a new you. A wardrobe that feels like you.<br>Here’s how we get there.</p></div>
-      <div class="steps-wrap"><p class="eyebrow steps-heading">How it works</p><ol class="steps">
-        <li><span class="step-number eyebrow">01</span><div><h3 id="step-1-title">Tell us what you’re looking for</h3><p id="step-1-copy">Your taste, your everyday, and what you want to feel. We start with you.</p></div><span class="step-arrow" aria-hidden="true">↗</span></li>
-        <li><span class="step-number eyebrow">02</span><div><h3 id="step-2-title">Meet your stylist</h3><p id="step-2-copy">Find someone who gets your eye, your life, and where you want to go.</p></div><span class="step-arrow" aria-hidden="true">↗</span></li>
-        <li><span class="step-number eyebrow">03</span><div><h3 id="step-3-title">New wardrobe, more you</h3><p id="step-3-copy">Make room for pieces that feel right. And a style that feels entirely your own.</p></div><span class="step-arrow" aria-hidden="true">↗</span></li>
-      </ol></div>
+      <div class="how-controls"><h2 class="eyebrow" id="how-title">How it works</h2><div class="audience-switch" role="group" aria-label="How it works for"><button type="button" class="dot-action" data-switch-role="client" aria-pressed="true"><span class="dot-action-label">For members</span></button><button type="button" class="dot-action" data-switch-role="stylist" aria-pressed="false"><span class="dot-action-label">For stylists</span></button></div></div>
+      <div class="story-progress"><span class="eyebrow" id="story-count">1 : 3</span><span class="story-progress-track"><span id="story-progress-fill"></span></span></div>
+      <ol class="story-grid" aria-label="How it works steps">
+        <li><button type="button" class="dot-action story-card is-active" data-step="0" aria-pressed="true"><span class="story-image story-image-one"><img src="assets/reference/story-shared-1.png" alt="" loading="lazy"></span><span class="story-details"><span class="story-number">(1).</span><span class="story-text"><span class="story-title dot-action-label" id="step-1-title">It starts with a conversation</span><span class="story-copy" id="step-1-copy">We ingest your life, your taste, and what you want. This happen automatically with software + a conversation with us.</span></span></span></button></li>
+        <li><button type="button" class="dot-action story-card" data-step="1" aria-pressed="false"><span class="story-image story-image-two"><img src="assets/reference/story-shared-2.png" alt="" loading="lazy"></span><span class="story-details"><span class="story-number">(2).</span><span class="story-text"><span class="story-title dot-action-label" id="step-2-title">a considered introduction</span><span class="story-copy" id="step-2-copy"></span></span></span></button></li>
+        <li><button type="button" class="dot-action story-card" data-step="2" aria-pressed="false"><span class="story-image story-image-three"><img src="assets/reference/story-shared-3.png" alt="" loading="lazy"></span><span class="story-details"><span class="story-number">(3).</span><span class="story-text"><span class="story-title dot-action-label" id="step-3-title">New wardrobe, more you</span><span class="story-copy" id="step-3-copy"></span></span></span></button></li>
+      </ol>
+    </section>
+
+    <section class="audience-section" aria-labelledby="audience-title">
+      <h2 id="audience-title">A new era of personal, luxury services<br>made accessible</h2>
+      <div class="audience-content"><p>Our talent is made up of fresh, exceptional creatives. People with instinct, curiosity, and a sexy point of view. We introduce them to members who value what they see, then take care of everything around that relationship, so working together feels effortless.<br><br>For our members, that means the freedom to place something personal in good hands. For our talent, it means room to do the work that made us seek them out.</p><div class="audience-links"><a href="#join" data-role="stylist" class="audience-card dot-action"><img src="assets/reference/tile-stylists.png" alt="" loading="lazy"><span class="dot-action-label">For stylists</span></a><a href="#join" data-role="client" class="audience-card dot-action"><img src="assets/reference/tile-members.png" alt="" loading="lazy"><span class="dot-action-label">For members</span></a></div></div>
     </section>
 
   </main>
-  <footer><a class="footer-logo" href="#top" aria-label="ETTO, back to top"><img src="assets/etto-wordmark.png" alt="ETTO" width="158" height="42" loading="lazy"></a><div class="footer-paths"><div><span class="eyebrow">For clients</span><a href="#join" data-role="client">Find your stylist <span aria-hidden="true">↗</span></a></div><div><span class="eyebrow">For stylists</span><a href="#join" data-role="stylist">Apply to style <span aria-hidden="true">↗</span></a></div></div><p class="copyright eyebrow">© <span id="year">2026</span> ETTO</p></footer>
+  <footer><a class="footer-logo" href="#top" aria-label="ETTO, back to top"><img src="assets/stamp-black.svg" alt="ETTO" width="26" height="17"></a><div class="footer-paths"><div><span class="eyebrow">For clients</span><a class="dot-action" href="#join" data-role="client"><span class="dot-action-label">Find your stylist</span></a></div><div><span class="eyebrow">For stylists</span><a class="dot-action" href="#join" data-role="stylist"><span class="dot-action-label">Apply to style</span></a></div></div><p class="copyright">© <span id="year">2026</span> Etto Systems Inc.</p></footer>
 </body>
 </html>

@@ -1,0 +1,155 @@
+/* The member reference frame (84:22) is the source for the page geometry. */
+body.home-page{--gutter:clamp(24px,5.46875vw,70px);--nav-gutter:clamp(24px,4.765625vw,61px);background:#fff}
+.home-page .site-header{position:absolute;inset:0 0 auto;z-index:5;display:block;height:92px;padding:0;background:transparent}
+.home-page .site-nav{height:100%;padding-inline:var(--nav-gutter)}
+.home-page .site-nav .stamp{position:static}
+.home-page .site-nav .nav-links a{font-size:12px;line-height:14px}
+
+.home-page .hero{height:100svh;min-height:540px;max-height:none;overflow:hidden;background:#e9ebeb}
+.home-page .campaign{position:absolute;inset:0;z-index:-2;height:100%}
+.home-page .campaign img{width:100%;height:100%;object-fit:cover;object-position:center}
+.home-page .hero::before{content:'';position:absolute;inset:0 0 auto;height:6.328125vw;z-index:1;background:linear-gradient(180deg,#fff 0%,rgba(255,255,255,.86) 18%,rgba(255,255,255,.5) 52%,transparent 100%);pointer-events:none}
+.home-page .hero::after{content:'';display:block;position:absolute;inset:auto 0 0;height:12vw;z-index:3;background:linear-gradient(180deg,transparent,#fff);pointer-events:none}
+.home-page .hero-wordmark{position:absolute;z-index:4;bottom:7%;left:50%;width:calc(100% - 2 * var(--gutter));height:auto;max-height:none;object-fit:contain;max-width:none;transform:translateX(-50%)}
+.home-page .concierge-intro{position:absolute;z-index:4;top:clamp(108px,17svh,160px);left:var(--gutter);width:min(41%,510px);max-width:none;display:flex;flex-direction:column;gap:13px;color:var(--ink);font-family:DiatypeMono,monospace;font-size:12px;line-height:1.25}
+.home-page .concierge-intro h1{font:500 32px/1.3 Diatype,Arial,sans-serif;letter-spacing:0;white-space:nowrap}
+.home-page .concierge-intro p{max-width:579px}
+.home-page .concierge-intro p+p{margin-top:0}
+.home-page .concierge-intro a{color:#667066;font:400 14px/20px DiatypeMono,monospace;text-transform:uppercase;margin-top:0;width:max-content}
+
+.home-page .signup-section{padding:100px var(--gutter);background:#fff}
+.home-page .signup-section .hero-content{display:grid;grid-template-columns:minmax(0,532.31px) minmax(0,532.32px);grid-template-rows:105.4px 164.4px;justify-content:space-between;column-gap:0;width:100%;max-width:none;padding:0;min-height:269.8px}
+.home-page .signup-section h2{grid-column:1;grid-row:1;font:500 40px/1.3 Diatype,Arial,sans-serif;letter-spacing:0;align-self:start;white-space:nowrap}
+.home-page .signup-copy{grid-column:1;grid-row:2;align-self:start;display:flex;align-items:center;min-height:96px;width:min(100%,451px);font:400 14px/1.35 DiatypeMono,monospace}
+.home-page .signup-section .join{grid-column:2;grid-row:1/span 2;align-self:start;width:100%;max-width:532.32px;margin:0;scroll-margin-top:24px}
+.home-page .role-picker{display:flex;align-items:center;gap:12px;font:400 24px/1 Diatype,Arial,sans-serif;letter-spacing:-.025em;min-height:33px}
+.home-page .role-prefix,.home-page .role-label{line-height:24px}
+.home-page .role-label{gap:7px;min-height:24px}
+.home-page .role-label::before{width:9px;height:9px}
+.home-page .role-or{font:400 14px/14px Diatype,Arial,sans-serif}
+.home-page .role-description{font:400 14px/19.6px Diatype,Arial,sans-serif;margin-top:15px;min-height:47px;max-width:340px}
+.home-page .form-fields{margin-top:23px}
+.home-page .field label{font:400 12px/12px DiatypeMono,monospace;letter-spacing:.03em}
+.home-page .field input{min-height:46px;padding:12px 0 10px;font-size:16px}
+.home-page .field input:focus{outline:none}
+.home-page .primary-button{height:52px;min-height:52px;padding:17px 21px;margin-top:23px;gap:20px;background:#f00;border-color:#f00;font-size:12px;line-height:1;letter-spacing:.06em}
+.home-page .primary-button:hover{background:#d90000;border-color:#d90000}
+.home-page .preview-note{font:400 12px/16.8px Diatype,Arial,sans-serif;margin-top:11px}
+
+.home-page .how-section{display:block;padding:115.2px var(--gutter) 157px;background:#fff}
+.home-page .how-controls{margin:0 0 28px}
+.home-page .how-controls h2{font:400 12px/12px DiatypeMono,monospace;letter-spacing:.03em}
+.home-page .audience-switch{gap:28px}
+.home-page .audience-switch button{font:400 12px/1 Diatype,Arial,sans-serif;padding-bottom:8px}
+.home-page .story-progress{gap:28px;margin:0 0 30px}
+.home-page .story-progress>.eyebrow{font-size:12px;line-height:12px}
+.home-page .story-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:0;max-width:none;min-height:480px;align-items:start}
+.home-page .story-card{display:flex;flex-direction:column;justify-content:flex-start;height:auto}
+.home-page .story-image{width:100%;height:auto;aspect-ratio:4/3;flex-shrink:0}
+.home-page .story-image img{position:absolute;max-width:none;filter:none;transform:none;transition:none;object-fit:cover}
+.home-page .story-image-one img{width:102.939%;height:103.135%;left:0;top:0;object-position:center}
+.home-page .story-image-two img{width:100%;height:199.98%;left:0;top:-17.644%;object-position:center}
+.home-page .story-image-three img{width:150.009%;height:150.295%;left:-45.143%;top:-50.286%;object-position:center}
+.home-page .story-card.is-active .story-image img,.home-page .story-card:hover .story-image img{filter:none;transform:none}
+.home-page .story-details{grid-template-columns:56px minmax(0,1fr);gap:12px;padding:23px 2px 0;opacity:.42}
+.home-page .story-card.is-active .story-details{opacity:1}
+.home-page .story-number{font:400 12px/16.8px Diatype,Arial,sans-serif}
+.home-page .story-title{font:400 16px/19.8px Diatype,Arial,sans-serif;letter-spacing:0}
+.home-page .story-copy{font:400 14px/1.25 DiatypeMono,monospace;max-width:246px}
+.home-page .story-copy:empty{display:none}
+
+.home-page .audience-section{padding:128px var(--gutter);background:#fff}
+.home-page .audience-section h2{max-width:1040px;font:500 48px/1.23 Diatype,Arial,sans-serif;letter-spacing:0;margin:0 0 60px}
+.home-page .audience-content{display:grid;grid-template-columns:296.03px 592.07px;justify-content:space-between;gap:0;align-items:start}
+.home-page .audience-content>p{max-width:297px;font:400 14px/18.2px Diatype,Arial,sans-serif}
+.home-page .audience-links{display:grid;grid-template-columns:repeat(2,296.03px);width:592.06px;margin:0}
+.home-page .audience-card{width:296.03px;height:379.53px;aspect-ratio:auto}
+.home-page .audience-card img{width:100%;height:100%;object-fit:cover;object-position:center;filter:none}
+.home-page .audience-card:first-child img{object-position:center}
+.home-page .audience-card:last-child img{object-position:center}
+.home-page .audience-card:after{background:linear-gradient(0deg,rgba(17,34,21,.52) 0%,rgba(18,35,22,.29) 28%,rgba(24,48,30,.06) 56%),rgba(25,49,34,.21)}
+.home-page .audience-card>span{font:400 14px/16.8px Diatype,Arial,sans-serif;left:24px;bottom:24px}
+.home-page footer{padding:58px var(--nav-gutter)}
+.home-page .footer-logo img{width:26.055px;height:17.075px;max-width:none}
+.home-page .footer-paths .eyebrow{font-size:10px;line-height:10px}
+.home-page .footer-paths a{font-size:14px}
+
+@media(max-width:1000px){
+  .home-page .site-nav{padding-inline:clamp(24px,4.77vw,61px)}
+  .home-page .concierge-intro{width:62%}
+  .home-page .concierge-intro h1{font-size:clamp(25px,3.125vw,32px);white-space:normal}
+  .home-page .signup-section,.home-page .how-section,.home-page .audience-section{padding-left:var(--gutter);padding-right:var(--gutter)}
+  .home-page .signup-section .hero-content{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:5%}
+  .home-page .signup-section h2{font-size:clamp(30px,3.125vw,40px);white-space:normal}
+  .home-page .story-grid{grid-template-columns:repeat(3,minmax(0,1fr));max-width:none}
+  .home-page .story-image{width:100%;height:auto;aspect-ratio:4/3}
+  .home-page .audience-content{grid-template-columns:minmax(220px,1fr) minmax(0,592px);gap:6%}
+  .home-page .audience-links{width:100%;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .home-page .audience-card{width:100%;height:auto;aspect-ratio:.78}
+  .home-page footer{padding-inline:5%}
+}
+@media(max-width:700px){
+  .home-page .site-header{height:80px}
+  .home-page .site-nav{padding-inline:clamp(28px,9vw,40px)}
+  .home-page .hero{height:100svh;min-height:680px;background:#fff}
+  .home-page .campaign{inset:64px 0 -54px;height:auto}
+  .home-page .campaign img{object-position:49% center}
+  .home-page .hero::before{height:180px;background:linear-gradient(180deg,#fff 35%,transparent 100%)}
+  .home-page .hero::after{height:90px}
+  .home-page .hero-wordmark{bottom:26px;width:calc(100% - 36px)}
+  .home-page .concierge-intro{top:104px;bottom:auto;left:clamp(28px,10vw,40px);width:min(66%,280px);font-size:12px;gap:16px;line-height:1.35;padding:0;background:none}
+  .home-page .concierge-intro h1{font-size:24px;line-height:1.32;max-width:210px;margin-bottom:8px}
+  .home-page .concierge-intro p{max-width:380px}
+  .home-page .concierge-intro a{font-size:18px;line-height:24px;margin-top:0;color:#667066}
+  .home-page .signup-section{padding:70px 24px 90px}
+  .home-page .signup-section .hero-content{display:block;min-height:0}
+  .home-page .signup-section h2{font-size:36px;line-height:1.14}
+  .home-page .signup-copy{min-height:0;margin-top:30px;max-width:460px}
+  .home-page .signup-section .join{margin-top:52px;max-width:none}
+  .home-page .role-picker{font-size:23px;gap:9px}
+  .home-page .role-prefix,.home-page .role-label{line-height:23px}
+  .home-page .how-section{padding:80px 24px 110px}
+  .home-page .story-grid{display:flex;min-height:0;gap:0}
+  .home-page .story-grid li{flex:0 0 min(82vw,350px)}
+  .home-page .audience-section{padding:80px 24px 100px}
+  .home-page .audience-section h2{font-size:36px;line-height:1.12;margin-bottom:44px}
+  .home-page .audience-section h2 br{display:none}
+  .home-page .audience-content{display:block}
+  .home-page .audience-content>p{max-width:540px;margin-bottom:44px}
+  .home-page .audience-links{grid-template-columns:repeat(2,minmax(0,1fr));max-width:none}
+  .home-page .audience-card{aspect-ratio:.78}
+  .home-page footer{padding:44px 24px 36px}
+}
+@media(max-width:430px){
+  .home-page .role-picker{font-size:20px;gap:7px}
+  .home-page .audience-links{grid-template-columns:1fr}
+  .home-page .audience-card{aspect-ratio:1.1}
+}
+
+/* A quiet two-pulse introduction, followed by the page content. */
+@media(prefers-reduced-motion:no-preference){
+  .home-page .hero-wordmark{animation:wordmark-arrival 2.5s ease-in-out both}
+  .home-page .campaign{animation:content-arrival 1s 2.2s both}
+  .home-page .site-header,.home-page .concierge-intro,
+  .home-page main>section:not(.hero),.home-page>footer{animation:content-arrival .85s 2.5s both}
+  .home-page:has(:target) .hero-wordmark,.home-page:has(:target) .campaign,
+  .home-page:has(:target) .site-header,.home-page:has(:target) .concierge-intro,
+  .home-page:has(:target) main>section:not(.hero),.home-page:has(:target)>footer{animation:none}
+}
+@keyframes wordmark-arrival{
+  0%{opacity:0;filter:brightness(0) saturate(100%) invert(15%) sepia(100%) saturate(7500%) brightness(110%) contrast(120%)}
+  22%,50%{opacity:1}
+  36%,64%{opacity:.25}
+  78%{opacity:1;filter:brightness(0) saturate(100%) invert(15%) sepia(100%) saturate(7500%) brightness(110%) contrast(120%)}
+  100%{opacity:1;filter:brightness(0)}
+}
+@keyframes content-arrival{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){
+}
+@media(max-height:540px) and (min-width:701px){
+  .home-page .hero{min-height:100svh}
+  .home-page .site-header{height:80px}
+  .home-page .concierge-intro{top:72px;gap:8px;font-size:12px}
+  .home-page .concierge-intro h1{font-size:28px}
+  .home-page .hero-wordmark{bottom:5%;max-height:28%}
+}
