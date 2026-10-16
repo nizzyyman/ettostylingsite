@@ -1,0 +1,84 @@
+/* Shared action component: retain native links/buttons and wrap their text in
+   .dot-action-label. The reserved space keeps the hit area stable on hover. */
+.dot-action {
+  --action-shift: 22px;
+  --action-dot: 7px;
+}
+body .dot-action .dot-action-label {
+  position: relative;
+  display: inline-block;
+  padding-left: 0;
+  padding-right: var(--action-shift);
+  margin-left: 0;
+  text-align: left;
+  transform: none;
+  transition: padding .3s cubic-bezier(.2,.8,.2,1);
+}
+body .dot-action .dot-action-label::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: .6em;
+  width: var(--action-dot);
+  height: var(--action-dot);
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0;
+  transform: translateY(-50%) scale(.4);
+  transition: opacity .25s, transform .3s cubic-bezier(.2,.8,.2,1);
+}
+body .dot-action:focus-visible .dot-action-label {
+  padding-left: var(--action-shift);
+  padding-right: 0;
+}
+body .dot-action:focus-visible .dot-action-label::before {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+@media (hover: hover) {
+  body .dot-action:hover .dot-action-label {
+    padding-left: var(--action-shift);
+    padding-right: 0;
+  }
+  body .dot-action:hover .dot-action-label::before {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+}
+/* Replace the former per-control dots, arrows, lift, and underline effects. */
+body .dot-action::before { content: none; }
+body .dot-action:hover { text-decoration: none; }
+body .footer-paths .dot-action { padding-left: 0; }
+body .primary-button.dot-action { justify-content: flex-start; gap: 0; }
+body .primary-button.dot-action:hover { transform: none; }
+body .primary-button.dot-action:is(:hover,:focus-visible) span:first-child { transform: none; }
+body .site-nav .nav-links .dot-action:hover { text-decoration: none; }
+body .text-button.dot-action { border-bottom: 0; }
+body .audience-switch .dot-action { border-bottom: 0; }
+body .audience-switch .dot-action[aria-pressed="false"] .dot-action-label {
+  padding-left: 0;
+  padding-right: var(--action-shift);
+}
+body .audience-switch .dot-action[aria-pressed="false"] .dot-action-label::before {
+  opacity: 0;
+  transform: translateY(-50%) scale(.4);
+}
+body .audience-switch .dot-action .dot-action-label::before {
+  transition: none;
+}
+body .audience-switch .dot-action[aria-pressed="true"] .dot-action-label {
+  padding-left: var(--action-shift);
+  padding-right: 0;
+}
+body .audience-switch .dot-action[aria-pressed="true"] .dot-action-label::before {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+body .concierge-intro .dot-action { padding-block: 8px; color: var(--ink); }
+body .audience-card.dot-action > .dot-action-label { position: absolute; }
+body .audience-card.dot-action:hover img { transform: none; }
+body .audience-card.dot-action:hover::after { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  body .dot-action .dot-action-label,
+  body .dot-action .dot-action-label::before { transition: none; }
+}

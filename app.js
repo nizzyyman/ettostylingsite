@@ -1,27 +1,29 @@
 const content = {
   client: {
-    description: 'for a stylist who sees the person you already are.',
-    action: 'Join the list',
-    stepsDescription: 'Not a new you. A wardrobe that feels like you.\nHere’s how we get there.',
+    headline: 'Get matched with an eye<br>you trust.',
+    introduction: 'Meet a stylist who understands your taste and how you live, with Etto attending to the details along the way.',
+    description: 'to outsource my aesthetic life.',
+    action: 'Apply for membership',
     steps: [
-      ['Tell us what you’re looking for', 'Your taste, your everyday, and what you want to feel. We start with you.'],
-      ['Meet your stylist', 'Find someone who gets your eye, your life, and where you want to go.'],
-      ['New wardrobe, more you', 'Make room for pieces that feel right. And a style that feels entirely your own.'],
+      ['It starts with a conversation', 'We ingest your life, your taste, and what you want. This happen automatically with software + a conversation with us.'],
+      ['a considered introduction', ''],
+      ['New wardrobe, more you', ''],
     ],
     confirmation: 'A little closer to you.',
-    confirmationCopy: 'This is where your waitlist confirmation will appear. This preview hasn’t sent or saved your details.',
+    confirmationCopy: 'Thank you for your interest in ETTO. Your membership request has been received.',
   },
   stylist: {
-    description: 'as a stylist, and ready to make your mark.',
-    action: 'Apply to style',
-    stepsDescription: 'Your eye. Their next chapter.\nMake a living bringing personal style to life.',
+    headline: 'Have control over your<br>creative vision',
+    introduction: 'Work with members who value your taste. Get the support to give your creative work full attention.',
+    description: 'for aligned clients.',
+    action: 'Partner with Etto',
     steps: [
       ['Show us your eye', 'Share your perspective and the work that makes your style unmistakably yours.'],
-      ['Get matched with clients', 'Connect with people who are looking for exactly your kind of vision.'],
-      ['Grow your practice', 'Build lasting relationships, do meaningful work, and keep creating.'],
+      ['Get matched with clients', ''],
+      ['Grow your practice', ''],
     ],
     confirmation: 'Your eye belongs here.',
-    confirmationCopy: 'This is where your stylist application confirmation will appear. This preview hasn’t sent or saved your details.',
+    confirmationCopy: 'Thank you for sharing your interest. Your stylist application has been received.',
   },
 };
 
@@ -30,6 +32,22 @@ const confirmation = document.querySelector('#confirmation');
 const email = document.querySelector('#email');
 const instagram = document.querySelector('#instagram');
 let currentRole = 'client';
+let submitting = false;
+let pendingSubmission = null;
+const storyCards = [...document.querySelectorAll('.story-card')];
+const storyGrid = document.querySelector('.story-grid');
+let activeStep = 0;
+
+function setActiveStep(index) {
+  activeStep = index;
+  storyCards.forEach((card, i) => {
+    const active = i === index;
+    card.classList.toggle('is-active', active);
+    card.setAttribute('aria-pressed', String(active));
+  });
+  document.querySelector('#story-count').textContent = `${index + 1} : ${storyCards.length}`;
+  document.querySelector('#story-progress-fill').style.width = `${((index + 1) / storyCards.length) * 100}%`;
+}
 
 function clearError(input) {
   input.removeAttribute('aria-invalid');
@@ -37,14 +55,14 @@ function clearError(input) {
 }
 
 function setRole(role) {
-  if (!content[role]) return;
+  if (!content[role] || submitting) return;
   currentRole = role;
   const copy = content[role];
   document.querySelector(`input[name="role"][value="${role}"]`).checked = true;
+  document.querySelector('#hero-title').innerHTML = copy.headline;
+  document.querySelector('#signup-copy').textContent = copy.introduction;
   document.querySelector('#role-description').textContent = copy.description;
   document.querySelector('#submit-label').textContent = copy.action;
-  document.querySelector('#steps-description').textContent = copy.stepsDescription;
-  document.querySelector('#steps-description').style.whiteSpace = 'pre-line';
   document.querySelector('#instagram-field').hidden = role !== 'stylist';
   instagram.required = role === 'stylist';
   instagram.disabled = role !== 'stylist';
@@ -52,6 +70,10 @@ function setRole(role) {
     document.querySelector(`#step-${i + 1}-title`).textContent = title;
     document.querySelector(`#step-${i + 1}-copy`).textContent = description;
   });
+  document.querySelectorAll('[data-switch-role]').forEach(button => {
+    button.setAttribute('aria-pressed', String(button.dataset.switchRole === role));
+  });
+  setActiveStep(0);
   [email, instagram].forEach(clearError);
   confirmation.hidden = true;
   form.hidden = false;
@@ -63,10 +85,31 @@ document.querySelectorAll('input[name="role"]').forEach(input => {
 document.querySelectorAll('[data-role]').forEach(link => {
   link.addEventListener('click', () => setRole(link.dataset.role));
 });
+document.querySelectorAll('[data-switch-role]').forEach(button => {
+  button.addEventListener('click', () => setRole(button.dataset.switchRole));
+});
+storyCards.forEach((card, index) => {
+  card.addEventListener('click', () => setActiveStep(index));
+  card.addEventListener('focus', () => setActiveStep(index));
+  card.addEventListener('pointerenter', () => {
+    if (window.matchMedia('(hover: hover)').matches) setActiveStep(index);
+  });
+});
+storyGrid.addEventListener('scroll', () => {
+  if (!window.matchMedia('(max-width: 700px)').matches) return;
+  const closest = storyCards.reduce((best, card, index) => {
+    const distance = Math.abs(card.getBoundingClientRect().left - storyGrid.getBoundingClientRect().left);
+    return distance < best.distance ? { index, distance } : best;
+  }, { index: 0, distance: Infinity });
+  if (closest.index !== activeStep) setActiveStep(closest.index);
+}, { passive: true });
 [email, instagram].forEach(input => input.addEventListener('input', () => clearError(input)));
 
-form.addEventListener('submit', event => {
+form.addEventListener('submit', async event => {
   event.preventDefault();
+  if (submitting) return;
+  const formError = document.querySelector('#form-error');
+  formError.textContent = '';
   [email, instagram].forEach(clearError);
   email.value = email.value.trim();
   instagram.value = instagram.value.trim();
@@ -83,55 +126,43 @@ form.addEventListener('submit', event => {
     errors[0][0].focus();
     return;
   }
-  // Frontend preview only. Connect a signup service here when one is ready.
-  document.querySelector('#confirmation-title').textContent = content[currentRole].confirmation;
-  document.querySelector('#confirmation-copy').textContent = content[currentRole].confirmationCopy;
-  form.hidden = true;
-  confirmation.hidden = false;
-  form.reset();
-  confirmation.focus({ preventScroll: true });
+  const payload = { role: currentRole, email: email.value, instagram: currentRole === 'stylist' ? instagram.value : '', website: form.elements.website.value };
+  const signature = JSON.stringify(payload);
+  if (!pendingSubmission || pendingSubmission.signature !== signature) pendingSubmission = { signature, id: crypto.randomUUID() };
+  submitting = true;
+  const controls = [...document.querySelectorAll('#signup-form input, #signup-form button, input[name="role"], [data-switch-role]')];
+  const previousDisabled = controls.map(control => control.disabled);
+  controls.forEach(control => { control.disabled = true; });
+  form.setAttribute('aria-busy', 'true');
+  document.querySelector('#submit-label').textContent = 'Sending…';
+  try {
+    const response = await fetch(new URL('api/signup', document.baseURI), {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...payload, id: pendingSubmission.id }), signal: AbortSignal.timeout(25000),
+    });
+    const result = await response.json();
+    if (!response.ok || result.ok !== true) throw new Error(result.error || 'Please try again. Your details are still here.');
+    document.querySelector('#confirmation-title').textContent = content[payload.role].confirmation;
+    document.querySelector('#confirmation-copy').textContent = content[payload.role].confirmationCopy;
+    form.hidden = true;
+    confirmation.hidden = false;
+    form.reset();
+    document.querySelector(`input[name="role"][value="${payload.role}"]`).checked = true;
+    pendingSubmission = null;
+    confirmation.focus({ preventScroll: true });
+  } catch (error) {
+    formError.textContent = error.name === 'TimeoutError' || error.name === 'TypeError'
+      ? 'We couldn’t confirm your submission. Please try again. Your details are still here.' : error.message;
+  } finally {
+    submitting = false;
+    controls.forEach((control, index) => { control.disabled = previousDisabled[index]; });
+    form.removeAttribute('aria-busy');
+    document.querySelector('#submit-label').textContent = content[currentRole].action;
+  }
 });
 document.querySelector('#reset-form').addEventListener('click', () => {
   setRole(currentRole);
   email.focus({ preventScroll: true });
 });
 document.querySelector('#year').textContent = new Date().getFullYear();
-setRole('client');
-
-// The opener advances only on a click or Space; scrolling remains natural.
-const hero = document.querySelector('.hero');
-const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-if (!location.hash || location.hash === '#top') {
-  hero.classList.add('intro-running');
-  const movingMark = hero.querySelector('.opener-mark');
-  const destination = hero.querySelector('.wordmark img');
-  let started = false;
-  function finishIntro() {
-    hero.classList.remove('intro-running', 'intro-reveal');
-    movingMark.removeEventListener('transitionend', onTransitionEnd);
-  }
-  function onTransitionEnd(event) {
-    if (event.target === movingMark && event.propertyName === 'width') finishIntro();
-  }
-  function revealHero(event) {
-    if (started) return;
-    if (event.type === 'keydown' && event.code !== 'Space') return;
-    if (event.target.closest('input,textarea,select,[contenteditable="true"]')) return;
-    event.preventDefault();
-    event.stopPropagation();
-    started = true;
-    document.removeEventListener('click', revealHero, true);
-    document.removeEventListener('keydown', revealHero, true);
-    const target = destination.getBoundingClientRect();
-    const canvas = hero.getBoundingClientRect();
-    hero.style.setProperty('--mark-end-width', `${target.width}px`);
-    hero.style.setProperty('--mark-end-top', `${target.top - canvas.top + target.height / 2}px`);
-    if (reducedMotion.matches) { finishIntro(); return; }
-    movingMark.addEventListener('transitionend', onTransitionEnd);
-    hero.classList.add('intro-reveal');
-    // Cleanup fallback only after user activation, for interrupted transitions.
-    window.setTimeout(finishIntro, 1800);
-  }
-  document.addEventListener('click', revealHero, true);
-  document.addEventListener('keydown', revealHero, true);
-}
+setRole(new URLSearchParams(location.search).get('role') === 'stylist' ? 'stylist' : 'client');
