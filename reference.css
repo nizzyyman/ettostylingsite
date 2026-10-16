@@ -1,5 +1,5 @@
 /* The member reference frame (84:22) is the source for the page geometry. */
-body.home-page{--gutter:clamp(24px,4.861111vw,70px);--nav-gutter:var(--gutter);background:#fff}
+body.home-page{--gutter:clamp(24px,4.861111vw,70px);--nav-gutter:var(--gutter);--section-space:clamp(80px,8.333333vw,120px);background:#fff}
 .home-page .site-header{position:absolute;inset:0 0 auto;z-index:5;display:block;height:92px;padding:0;background:transparent}
 .home-page .site-nav{height:100%;padding-inline:var(--nav-gutter)}
 .home-page .site-nav .stamp{position:static}
@@ -17,7 +17,7 @@ body.home-page{--gutter:clamp(24px,4.861111vw,70px);--nav-gutter:var(--gutter);b
 .home-page .concierge-intro p+p{margin-top:0}
 .home-page .concierge-intro a{color:#667066;font:400 16px/1.25 DiatypeMono,monospace;text-transform:uppercase;margin-top:0;width:max-content}
 
-.home-page .signup-section{padding:100px var(--gutter);background:#fff}
+.home-page .signup-section{padding:var(--section-space) var(--gutter) 0;background:#fff}
 .home-page .signup-section .hero-content{display:grid;grid-template-columns:minmax(0,532.31px) minmax(0,532.32px);grid-template-rows:105.4px 164.4px;justify-content:space-between;column-gap:0;width:100%;max-width:none;padding:0;min-height:269.8px}
 .home-page .signup-section h2{grid-column:1;grid-row:1;font:500 40px/1.3 Diatype,Arial,sans-serif;letter-spacing:0;align-self:start;white-space:nowrap}
 .home-page .signup-copy{grid-column:1;grid-row:2;align-self:start;display:flex;align-items:center;min-height:96px;width:min(100%,451px);font:400 14px/1.35 DiatypeMono,monospace}
@@ -36,14 +36,14 @@ body.home-page{--gutter:clamp(24px,4.861111vw,70px);--nav-gutter:var(--gutter);b
 .home-page .primary-button:hover{background:#d90000;border-color:#d90000}
 .home-page .preview-note{font:400 12px/16.8px Diatype,Arial,sans-serif;margin-top:11px}
 
-.home-page .how-section{display:block;padding:115.2px var(--gutter) 157px;background:#fff}
+.home-page .how-section{display:block;padding:var(--section-space) var(--gutter) 0;background:#fff}
 .home-page .how-controls{margin:0 0 28px}
 .home-page .how-controls h2{font:400 12px/12px DiatypeMono,monospace;letter-spacing:.03em}
 .home-page .audience-switch{gap:28px}
 .home-page .audience-switch button{font:400 12px/1 Diatype,Arial,sans-serif;padding-bottom:8px}
 .home-page .story-progress{gap:28px;margin:0 0 30px}
 .home-page .story-progress>.eyebrow{font-size:12px;line-height:12px}
-.home-page .story-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:0;max-width:none;min-height:480px;align-items:start}
+.home-page .story-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:0;max-width:none;min-height:0;align-items:start}
 .home-page .story-card{display:flex;flex-direction:column;justify-content:flex-start;height:auto}
 .home-page .story-image{width:100%;height:auto;aspect-ratio:4/3;flex-shrink:0}
 .home-page .story-image img{position:absolute;max-width:none;filter:none;transform:none;transition:none;object-fit:cover}
@@ -58,7 +58,7 @@ body.home-page{--gutter:clamp(24px,4.861111vw,70px);--nav-gutter:var(--gutter);b
 .home-page .story-copy{font:400 14px/1.25 DiatypeMono,monospace;max-width:246px}
 .home-page .story-copy:empty{display:none}
 
-.home-page .audience-section{padding:128px var(--gutter);background:#fff}
+.home-page .audience-section{padding:var(--section-space) var(--gutter) 0;background:#fff}
 .home-page .audience-section h2{max-width:1040px;font:500 48px/1.23 Diatype,Arial,sans-serif;letter-spacing:0;margin:0 0 60px}
 .home-page .audience-content{display:grid;grid-template-columns:296.03px 592.07px;justify-content:space-between;gap:0;align-items:start}
 .home-page .audience-content>p{max-width:297px;font:400 14px/18.2px Diatype,Arial,sans-serif}
@@ -69,7 +69,7 @@ body.home-page{--gutter:clamp(24px,4.861111vw,70px);--nav-gutter:var(--gutter);b
 .home-page .audience-card:last-child img{object-position:center}
 .home-page .audience-card:after{background:linear-gradient(0deg,rgba(17,34,21,.52) 0%,rgba(18,35,22,.29) 28%,rgba(24,48,30,.06) 56%),rgba(25,49,34,.21)}
 .home-page .audience-card>span{font:400 14px/16.8px Diatype,Arial,sans-serif;left:24px;bottom:24px}
-.home-page footer{padding:58px var(--nav-gutter)}
+.home-page footer{padding:var(--section-space) var(--gutter) 58px}
 .home-page .footer-logo img{width:26.055px;height:17.075px;max-width:none}
 .home-page .footer-paths .eyebrow{font-size:10px;line-height:10px}
 .home-page .footer-paths a{font-size:14px}
@@ -80,7 +80,8 @@ body.home-page{--gutter:clamp(24px,4.861111vw,70px);--nav-gutter:var(--gutter);b
   .home-page .concierge-intro h1{font-size:clamp(25px,3.125vw,32px);white-space:normal}
   .home-page .signup-section,.home-page .how-section,.home-page .audience-section{padding-left:var(--gutter);padding-right:var(--gutter)}
   .home-page .signup-section .hero-content{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:5%}
-  .home-page .signup-section h2{font-size:clamp(30px,3.125vw,40px);white-space:normal}
+  .home-page .signup-section h2{font-size:clamp(30px,3.125vw,40px);white-space:normal;text-wrap:balance}
+  .home-page .signup-section h2 br{display:none}
   .home-page .story-grid{grid-template-columns:repeat(3,minmax(0,1fr));max-width:none}
   .home-page .story-image{width:100%;height:auto;aspect-ratio:4/3}
   .home-page .audience-content{grid-template-columns:minmax(220px,1fr) minmax(0,592px);gap:6%}
@@ -101,24 +102,25 @@ body.home-page{--gutter:clamp(24px,4.861111vw,70px);--nav-gutter:var(--gutter);b
   .home-page .concierge-intro h1{font-size:24px;line-height:1.32;max-width:210px;margin-bottom:8px}
   .home-page .concierge-intro p{max-width:380px}
   .home-page .concierge-intro a{font-size:clamp(14px,3.2vw,16px);line-height:1.25;margin-top:0;color:#667066}
-  .home-page .signup-section{padding:70px var(--gutter) 90px}
+  .home-page .signup-section{padding:var(--section-space) var(--gutter) 0}
   .home-page .signup-section .hero-content{display:block;min-height:0}
-  .home-page .signup-section h2{font-size:36px;line-height:1.14}
+  .home-page .signup-section h2{font-size:clamp(28px,8.14vw,36px);line-height:1.14;text-wrap:balance}
+  .home-page .signup-section h2 br{display:none}
   .home-page .signup-copy{min-height:0;margin-top:30px;max-width:460px}
   .home-page .signup-section .join{margin-top:52px;max-width:none}
   .home-page .role-picker{font-size:23px;gap:9px}
   .home-page .role-prefix,.home-page .role-label{line-height:23px}
-  .home-page .how-section{padding:80px var(--gutter) 110px}
-  .home-page .story-grid{display:flex;min-height:0;gap:0}
+  .home-page .how-section{padding:var(--section-space) var(--gutter) 0}
+  .home-page .story-grid{display:flex;min-height:0;gap:0;padding-bottom:0}
   .home-page .story-grid li{flex:0 0 min(82vw,350px)}
-  .home-page .audience-section{padding:80px var(--gutter) 100px}
+  .home-page .audience-section{padding:var(--section-space) var(--gutter) 0}
   .home-page .audience-section h2{font-size:36px;line-height:1.12;margin-bottom:44px}
   .home-page .audience-section h2 br{display:none}
   .home-page .audience-content{display:block}
   .home-page .audience-content>p{max-width:540px;margin-bottom:44px}
   .home-page .audience-links{grid-template-columns:repeat(2,minmax(0,1fr));max-width:none}
   .home-page .audience-card{aspect-ratio:.78}
-  .home-page footer{padding:44px var(--gutter) 36px}
+  .home-page footer{padding:var(--section-space) var(--gutter) 36px}
 }
 @media(max-width:430px){
   .home-page .role-picker{font-size:20px;gap:7px}

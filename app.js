@@ -1,6 +1,6 @@
 const content = {
   client: {
-    headline: 'Get matched with an eye<br>you trust.',
+    headline: 'Get matched with an eye<br> you trust.',
     introduction: 'Meet a stylist who understands your taste and how you live, with Etto attending to the details along the way.',
     description: 'to outsource my aesthetic life.',
     action: 'Apply for membership',
@@ -13,7 +13,7 @@ const content = {
     confirmationCopy: 'Thank you for your interest in ETTO. Your membership request has been received.',
   },
   stylist: {
-    headline: 'Have control over your<br>creative vision',
+    headline: 'Have control over your<br> creative vision',
     introduction: 'Work with members who value your taste. Get the support to give your creative work full attention.',
     description: 'for aligned clients.',
     action: 'Partner with Etto',
