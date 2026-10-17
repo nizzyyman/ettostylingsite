@@ -40,6 +40,8 @@ Set these server-only environment variables in Vercel:
 
 - `GOOGLE_SHEETS_WEBHOOK_URL`: deployed Apps Script web-app URL.
 - `GOOGLE_SHEETS_TOKEN`: private token matching the receiver's stored hash.
+- `KO_X_ETTO_SIGNUP_URL` and `KO_X_ETTO_INGEST_TOKEN` (optional): once the sheet confirms a write, the application is also copied to the ko x etto waitlist. This copy is best effort and never fails the application. If either variable is unset, nothing is copied.
+- The token must match `CONCIERGE_INGEST_TOKEN` on the ko x etto side, and it stays server-only like the sheet token.
 
 For local testing, put the same values in ignored `.env.local` and restart the development server. Never put them in browser code. The receiver runs as the sheet owner; the endpoint requires the token and the sheet stays private. Submission IDs make retries idempotent. Failed writes retain the form and show an error.
 

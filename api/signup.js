@@ -35,8 +35,27 @@ export default async function handler(req, res) {
     });
     const saved = result.ok && (await result.json()).ok === true;
     if (!saved) throw new Error('Submission was not acknowledged');
-    return res.status(200).json({ ok: true });
   } catch {
     return res.status(502).json({ error: 'We couldn’t confirm your submission. Please try again. Your details are still here.' });
   }
+  // Only a confirmed sheet write reaches here. Awaited because Vercel may freeze the function after responding.
+  await copyToWaitlist(data.role, email, instagram);
+  return res.status(200).json({ ok: true });
+}
+
+// Best effort copy to the ko x etto waitlist. Failures are logged (never the email or token) and never fail the application.
+async function copyToWaitlist(role, email, instagram) {
+  const url = process.env.KO_X_ETTO_SIGNUP_URL;
+  const token = process.env.KO_X_ETTO_INGEST_TOKEN;
+  if (!url || !token) return;
+  let reason;
+  try {
+    const result = await fetch(url, {
+      method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+      body: JSON.stringify({ role: role === 'stylist' ? 'creating' : 'looking', email, ...(role === 'stylist' ? { instagram } : {}), source: 'concierge' }),
+      signal: AbortSignal.timeout(5000),
+    });
+    reason = !result.ok ? `HTTP ${result.status}` : (await result.json()).ok === true ? '' : 'not acknowledged';
+  } catch (err) { reason = err?.name || 'error'; }
+  if (reason) console.error('[signup] ko x etto waitlist copy failed:', reason);
 }
