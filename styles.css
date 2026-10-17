@@ -263,12 +263,23 @@ etto-nav{display:block;width:100%;height:100%}
 .audience-card:first-child img,.audience-card:last-child img{object-position:center;filter:none}
 .audience-card:after{background:rgba(5,5,5,.22)}
 .copyright{font:400 12px/14px DiatypeMono,monospace;color:#667066;letter-spacing:0;text-transform:none}
+.home-page footer{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto auto;align-items:start;column-gap:24px;row-gap:18px}
+.home-page .footer-logo{grid-column:1;grid-row:1;width:max-content}
+.home-page .copyright{grid-column:1;grid-row:2;justify-self:start;white-space:nowrap}
+.home-page .footer-paths{grid-column:2;grid-row:1 / span 2;justify-self:end}
+@media(max-width:700px){
+  .home-page .footer-paths{flex-direction:column;gap:32px}
+}
+@media(max-width:350px){
+  .home-page footer{grid-template-columns:1fr}
+  .home-page .footer-paths{grid-column:1;grid-row:3}
+}
 
 /* The About page intentionally keeps only the navigation and manifesto. */
 .about-page{background:#fff;color:#000}
 .about-page .site-header{height:80px;padding:0}
 .manifesto-page{display:grid;place-items:center;min-height:calc(100svh - 80px);padding:clamp(20px,4svh,40px) clamp(24px,10vw,160px)}
-.manifesto{width:min(100%,740px);text-align:left;font:400 clamp(14px,2.1svh,16px)/1.35 Diatype,Arial,sans-serif}
+.manifesto{width:min(100%,740px);text-align:left;font:400 14px/1.6 DiatypeMono,monospace}
 .manifesto h1{font:inherit;letter-spacing:0}
 .manifesto p{margin-top:.75em}
 
@@ -286,5 +297,5 @@ etto-nav{display:block;width:100%;height:100%}
   .signup-section .hero-content{display:block}
   .signup-section .join{margin-top:38px}
   .manifesto-page{min-height:calc(100svh - 61px);padding:28px clamp(24px,8vw,48px) 40px}
-  .manifesto{font-size:15px;line-height:1.4}
+  .manifesto{line-height:1.4}
 }
