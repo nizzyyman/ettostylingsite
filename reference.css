@@ -11,11 +11,11 @@ body.home-page{--gutter:clamp(24px,4.861111vw,70px);--nav-gutter:var(--gutter);-
 .home-page .hero::before{content:'';position:absolute;inset:0 0 auto;height:6.328125vw;z-index:1;background:linear-gradient(180deg,#fff 0%,rgba(255,255,255,.86) 18%,rgba(255,255,255,.5) 52%,transparent 100%);pointer-events:none}
 .home-page .hero::after{content:'';display:block;position:absolute;inset:auto 0 0;height:12vw;z-index:3;background:linear-gradient(180deg,transparent,#fff);pointer-events:none}
 .home-page .hero-wordmark{position:absolute;z-index:4;bottom:7%;left:50%;width:calc(100% - 2 * var(--gutter));height:auto;max-height:none;object-fit:contain;max-width:none;transform:translateX(-50%)}
-.home-page .concierge-intro{position:absolute;z-index:4;top:clamp(108px,17svh,160px);left:var(--gutter);width:min(41%,510px);max-width:none;display:flex;flex-direction:column;gap:13px;color:var(--ink);font-family:DiatypeMono,monospace;font-size:12px;line-height:1.25}
+.home-page .concierge-intro{position:absolute;z-index:4;top:clamp(108px,17svh,160px);left:var(--gutter);width:min(41%,510px);max-width:none;display:flex;flex-direction:column;gap:13px;color:var(--ink);font-family:DiatypeMono,monospace;font-size:14px;line-height:1.25}
 .home-page .concierge-intro h1{font:500 32px/1.3 Diatype,Arial,sans-serif;letter-spacing:0;white-space:nowrap}
 .home-page .concierge-intro p{max-width:579px}
 .home-page .concierge-intro p+p{margin-top:0}
-.home-page .concierge-intro a{color:#667066;font:400 16px/1.25 DiatypeMono,monospace;text-transform:uppercase;margin-top:0;width:max-content}
+.home-page .concierge-intro a{color:#667066;font:400 14px/1.25 DiatypeMono,monospace;text-transform:uppercase;margin-top:0;width:max-content}
 
 .home-page .signup-section{padding:var(--section-space) var(--gutter) 0;background:#fff}
 .home-page .signup-section .hero-content{display:grid;grid-template-columns:minmax(0,532.31px) minmax(0,532.32px);grid-template-rows:minmax(105.4px,auto) minmax(164.4px,auto);justify-content:space-between;column-gap:0;width:100%;max-width:none;padding:0;min-height:269.8px}
@@ -40,7 +40,7 @@ body.home-page{--gutter:clamp(24px,4.861111vw,70px);--nav-gutter:var(--gutter);-
 .home-page .how-controls{margin:0 0 28px}
 .home-page .how-controls h2{font:400 12px/12px DiatypeMono,monospace;letter-spacing:.03em}
 .home-page .audience-switch{gap:28px}
-.home-page .audience-switch button{font:400 12px/1 Diatype,Arial,sans-serif;padding-bottom:8px}
+.home-page .audience-switch button{font:400 14px/1 Diatype,Arial,sans-serif;padding-bottom:8px}
 .home-page .story-progress{gap:28px;margin:0 0 30px}
 .home-page .story-progress>.eyebrow{font-size:12px;line-height:12px}
 .home-page .story-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:0;max-width:none;min-height:0;align-items:start}
@@ -61,7 +61,7 @@ body.home-page{--gutter:clamp(24px,4.861111vw,70px);--nav-gutter:var(--gutter);-
 .home-page .audience-section{padding:var(--section-space) var(--gutter) 0;background:#fff}
 .home-page .audience-section h2{max-width:1040px;font:500 48px/1.23 Diatype,Arial,sans-serif;letter-spacing:0;margin:0 0 60px}
 .home-page .audience-content{display:grid;grid-template-columns:296.03px 592.07px;justify-content:space-between;gap:0;align-items:start}
-.home-page .audience-content>p{max-width:297px;font:400 14px/18.2px Diatype,Arial,sans-serif}
+.home-page .audience-content>p{max-width:297px;font:400 14px/18.2px DiatypeMono,monospace}
 .home-page .audience-links{display:grid;grid-template-columns:repeat(2,296.03px);width:592.06px;margin:0}
 .home-page .audience-card{width:296.03px;height:379.53px;aspect-ratio:auto}
 .home-page .audience-card img{width:100%;height:100%;object-fit:cover;object-position:center;filter:none}
@@ -101,7 +101,7 @@ body.home-page{--gutter:clamp(24px,4.861111vw,70px);--nav-gutter:var(--gutter);-
   .home-page .concierge-intro{top:104px;bottom:auto;left:var(--gutter);width:min(66%,280px);font-size:12px;gap:16px;line-height:1.35;padding:0;background:none}
   .home-page .concierge-intro h1{font-size:24px;line-height:1.32;max-width:210px;margin-bottom:8px}
   .home-page .concierge-intro p{max-width:380px}
-  .home-page .concierge-intro a{font-size:clamp(14px,3.2vw,16px);line-height:1.25;margin-top:0;color:#667066}
+  .home-page .concierge-intro a{font-size:clamp(12px,3.6vw,14px);line-height:1.25;margin-top:0;color:#667066}
   .home-page .signup-section{padding:var(--section-space) var(--gutter) 0}
   .home-page .signup-section .hero-content{display:block;min-height:0}
   .home-page .signup-section h2{font-size:clamp(28px,8.14vw,36px);line-height:1.14;text-wrap:balance}
@@ -156,7 +156,7 @@ body.home-page{--gutter:clamp(24px,4.861111vw,70px);--nav-gutter:var(--gutter);-
 @media(max-height:540px) and (min-width:701px){
   .home-page .hero{min-height:100svh}
   .home-page .site-header{height:80px}
-  .home-page .concierge-intro{top:72px;gap:8px;font-size:12px}
+  .home-page .concierge-intro{top:72px;gap:8px;font-size:14px}
   .home-page .concierge-intro h1{font-size:28px}
   .home-page .hero-wordmark{bottom:5%;max-height:28%}
 }
