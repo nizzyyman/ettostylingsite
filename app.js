@@ -10,7 +10,7 @@ const content = {
     description: 'to outsource my aesthetic life.',
     action: 'Apply for membership',
     steps: memberSteps,
-    confirmationCopy: 'Thank you for your interest in ETTO. Your membership request has been received.',
+    confirmationCopy: 'Thank you for your interest in ETTO. Your membership request has been received. You will receive next steps via email.',
   },
   stylist: {
     headline: 'Have control over your<br> creative vision',
