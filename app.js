@@ -10,7 +10,6 @@ const content = {
     description: 'to outsource my aesthetic life.',
     action: 'Apply for membership',
     steps: memberSteps,
-    confirmation: 'A little closer to you.',
     confirmationCopy: 'Thank you for your interest in ETTO. Your membership request has been received.',
   },
   stylist: {
@@ -23,7 +22,6 @@ const content = {
       ['Get matched with clients', 'Meet members who value your point of view and are ready to build something personal with you.'],
       ['Grow your practice', 'Spend more time on the creative work while Etto takes care of the details around it.'],
     ],
-    confirmation: 'Your eye belongs here.',
     confirmationCopy: 'Thank you for sharing your interest. Your stylist application has been received.',
   },
 };
@@ -143,7 +141,6 @@ form.addEventListener('submit', async event => {
     });
     const result = await response.json();
     if (!response.ok || result.ok !== true) throw new Error(result.error || 'Please try again. Your details are still here.');
-    document.querySelector('#confirmation-title').textContent = content[payload.role].confirmation;
     document.querySelector('#confirmation-copy').textContent = content[payload.role].confirmationCopy;
     form.hidden = true;
     confirmation.hidden = false;
